@@ -48,7 +48,7 @@ final readonly class TypeReflector implements Reflector
 
     public function asClass(): ClassReflector
     {
-        return new ClassReflector($this->definition);
+        return new ClassReflector($this->cleanDefinition);
     }
 
     public function equals(string|TypeReflector $type): bool
@@ -126,7 +126,7 @@ final readonly class TypeReflector implements Reflector
 
     public function getShortName(): string
     {
-        $parts = explode('\\', $this->definition);
+        $parts = explode('\\', $this->cleanDefinition);
 
         return $parts[array_key_last($parts)];
     }
